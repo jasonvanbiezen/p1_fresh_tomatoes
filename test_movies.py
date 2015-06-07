@@ -13,11 +13,11 @@ lead_actors=['Mark Wahlberg','Tyrese gibson']
 
 class TestMovieClass(unittest.TestCase):
     def test_init_no_imdb_id(self):
-        movie = movies.Movie(title,summary,url1,url2,rating,lead_actors)
+        movie = movies.Movie(title=title,summary=summary,trailer_youtube_url=url1,poster_image_url=url2,rating=rating,lead_actors=lead_actors)
         self.assertEqual(movie.title,title)
         self.assertEqual(movie.summary,summary)
-        self.assertEqual(movie.cover_url,url1)
-        self.assertEqual(movie.trailer_url,url2)
+        self.assertEqual(movie.poster_image_url,url1)
+        self.assertEqual(movie.trailer_youtube_url,url2)
         self.assertEqual(movie.rating,rating)
         self.assertEqual(movie.lead_actors,lead_actors)
         self.assertEqual(movie._webload_successful,False)

@@ -1,6 +1,7 @@
 import webbrowser
 import os
 import re
+from datetime import date
 
 # Styles and scripting for the page
 main_page_head = '''
@@ -110,9 +111,14 @@ main_page_content = '''
         </div>
       </div>
     </div>
+    <img src="images/banner.png" style="display:block; margin:0 auto;"/>
+    <div style="width:100%; text-align:right; font-size: 20px;">By: Jason van Biezen</div>
     <div class="container">
       {movie_tiles}
     </div>
+    <footer class="container-fluid" style="height:24px;line-height:20px;background:darkgray;color:white;">
+      Copyright &copy; Jason van Biezen {year}
+    </footer>
   </body>
 </html>
 '''
@@ -122,6 +128,10 @@ movie_tile_content = '''
 <div class="col-md-6 col-lg-4 movie-tile text-center" data-trailer-youtube-id="{trailer_youtube_id}" data-toggle="modal" data-target="#trailer">
     <img src="{poster_image_url}" width="220" height="342">
     <h2>{movie_title}</h2>
+    <p>Released: {released}</p>
+    <center>{stars}</center>
+    <p>{summary}</p>
+    <p><b>Cast:</b>{cast}</p>
 </div>
 '''
 
@@ -134,11 +144,20 @@ def create_movie_tiles_content(movies):
         youtube_id_match = youtube_id_match or re.search(r'(?<=be/)[^&#]+', movie.trailer_youtube_url)
         trailer_youtube_id = youtube_id_match.group(0) if youtube_id_match else None
 
+        stars=''
+        for i in range(movie.rating):
+            stars+='<img src="images/star.png" />'
+        actors=', '.join(movie.lead_actors)
+
         # Append the tile for the movie with its content filled in
         content += movie_tile_content.format(
             movie_title=movie.title,
             poster_image_url=movie.poster_image_url,
-            trailer_youtube_id=trailer_youtube_id
+            trailer_youtube_id=trailer_youtube_id,
+            stars=stars,
+            summary=movie.summary,
+            cast=actors,
+            released=movie.released
         )
     return content
 
@@ -147,7 +166,7 @@ def open_movies_page(movies):
   output_file = open('fresh_tomatoes.html', 'w')
 
   # Replace the placeholder for the movie tiles with the actual dynamically generated content
-  rendered_content = main_page_content.format(movie_tiles=create_movie_tiles_content(movies))
+  rendered_content = main_page_content.format(movie_tiles=create_movie_tiles_content(movies),year=date.today().year)
 
   # Output the file
   output_file.write(main_page_head + rendered_content)
@@ -156,3 +175,5 @@ def open_movies_page(movies):
   # open the output file in the browser
   url = os.path.abspath(output_file.name)
   webbrowser.open('file://' + url, new=2) # open in a new tab, if possible
+
+
