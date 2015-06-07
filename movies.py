@@ -37,7 +37,7 @@ class Movie:
             self.title=title
             self.summary=summary
             self.poster_image_url=poster_image_url
-            self.rating=0
+            self.rating=rating or 0
             self.lead_actors=lead_actors 
             self.genre=genre
             self.released=released

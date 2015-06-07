@@ -1,3 +1,8 @@
 Udacity Nanodegree - Fullstack Web Developer
 Project 1: Fresh Tomates Movie Reviews
 By: Jason van Biezen
+
+-- INSTRUCTIONS --
+Run Tests: make test
+Generate Fresh Tomatoes HTML: make run
+

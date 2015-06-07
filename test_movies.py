@@ -8,7 +8,7 @@ imdb_id='tt0430105'
 summary='Mark Wahlberg takes on a crime syndicate with his brothers.'
 url1='example.com/pic'
 url2='example.com/trailer'
-rating=10
+rating=5
 lead_actors=['Mark Wahlberg','Tyrese gibson']
 
 class TestMovieClass(unittest.TestCase):
@@ -16,8 +16,8 @@ class TestMovieClass(unittest.TestCase):
         movie = movies.Movie(title=title,summary=summary,trailer_youtube_url=url1,poster_image_url=url2,rating=rating,lead_actors=lead_actors)
         self.assertEqual(movie.title,title)
         self.assertEqual(movie.summary,summary)
-        self.assertEqual(movie.poster_image_url,url1)
-        self.assertEqual(movie.trailer_youtube_url,url2)
+        self.assertEqual(movie.trailer_youtube_url,url1)
+        self.assertEqual(movie.poster_image_url,url2)
         self.assertEqual(movie.rating,rating)
         self.assertEqual(movie.lead_actors,lead_actors)
         self.assertEqual(movie._webload_successful,False)
