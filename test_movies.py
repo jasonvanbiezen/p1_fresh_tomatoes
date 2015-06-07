@@ -1,6 +1,6 @@
 #!/usr/bin/env python
 
-import movies
+import media
 import unittest
 
 title='Four Brothers'
@@ -13,7 +13,7 @@ lead_actors=['Mark Wahlberg','Tyrese gibson']
 
 class TestMovieClass(unittest.TestCase):
     def test_init_no_imdb_id(self):
-        movie = movies.Movie(title=title,summary=summary,trailer_youtube_url=url1,poster_image_url=url2,rating=rating,lead_actors=lead_actors)
+        movie = media.Movie(title=title,summary=summary,trailer_youtube_url=url1,poster_image_url=url2,rating=rating,lead_actors=lead_actors)
         self.assertEqual(movie.title,title)
         self.assertEqual(movie.summary,summary)
         self.assertEqual(movie.trailer_youtube_url,url1)
@@ -22,7 +22,7 @@ class TestMovieClass(unittest.TestCase):
         self.assertEqual(movie.lead_actors,lead_actors)
         self.assertEqual(movie._webload_successful,False)
     def test_init_with_imdb_id(self):
-        movie = movies.Movie(imdb_id=imdb_id)
+        movie = media.Movie(imdb_id=imdb_id)
         self.assertEqual(movie.title,title)
 
 suite = unittest.TestLoader().loadTestsFromTestCase(TestMovieClass)

@@ -3,3 +3,5 @@ run:
 all: test
 test:
 	./test_*.py
+clean:
+	rm *.pyc *.html
