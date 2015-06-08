@@ -21,6 +21,15 @@ class TestMovieClass(unittest.TestCase):
         self.assertEqual(movie.rating,rating)
         self.assertEqual(movie.lead_actors,lead_actors)
         self.assertEqual(movie._webload_successful,False)
+
+    def test_rating_limits(self):
+        movie = media.Movie(rating=6)
+        self.assertEqual(movie.rating,5)
+        movie = media.Movie(rating=-1)
+        self.assertEqual(movie.rating,0)
+        movie = media.Movie(rating=None)
+        self.assertEqual(movie.rating,0)
+
     def test_init_with_imdb_id(self):
         movie = media.Movie(imdb_id=imdb_id)
         self.assertEqual(movie.title,title)

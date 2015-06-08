@@ -131,7 +131,7 @@ movie_tile_content = '''
     <p>Released: {released}</p>
     <center>{stars}</center>
     <p>{summary}</p>
-    <p><b>Cast:</b>{cast}</p>
+    <p><b>Cast:</b> {cast}</p>
 </div>
 '''
 

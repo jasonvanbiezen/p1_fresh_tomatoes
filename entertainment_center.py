@@ -1,6 +1,10 @@
 import media
 
 def get_movie_list():
+    """
+    Returns:
+        A list of populated media.Movie objects
+    """
     print("Generating movie list...")
     ret = []
     ret.append(media.Movie(title='Four Brothers',summary='Mark Wahlberg takes on a crime syndicate with his brothers.',poster_image_url='http://ia.media-imdb.com/images/M/MV5BMTU4NzM3Njg2NV5BMl5BanBnXkFtZTcwNjU4NDczMw@@._V1_SY317_CR0,0,214,317_AL_.jpg',trailer_youtube_url='https://www.youtube.com/watch?v=vZPi0K6UoP8',rating=5,imdb_id='tt0430105'))
