@@ -111,7 +111,7 @@ main_page_content = '''
         </div>
       </div>
     </div>
-    <img src="images/banner.png" style="display:block; margin:0 auto;"/>
+    <img src="https://dl.dropboxusercontent.com/u/28011407/Pictures/fresh_tomatoes/banner.png" style="display:block; margin:0 auto;"/>
     <div style="width:100%; text-align:right; font-size: 20px;">By: Jason van Biezen</div>
     <div class="container">
       {movie_tiles}
@@ -146,7 +146,7 @@ def create_movie_tiles_content(movies):
 
         stars=''
         for i in range(movie.rating):
-            stars+='<img src="images/star.png" />'
+            stars+='<img src="https://dl.dropboxusercontent.com/u/28011407/Pictures/fresh_tomatoes/star.png" />'
         actors=', '.join(movie.lead_actors)
 
         # Append the tile for the movie with its content filled in
